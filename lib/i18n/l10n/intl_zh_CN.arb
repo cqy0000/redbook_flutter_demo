@@ -1,0 +1,46 @@
+{
+  "@@last_modified": "2020-03-04T12:53:16.939327",
+  "@@locale":"zh_CN",
+  "followTab": "关注",
+  "@followTab": {
+    "description": "Index page buttom tab of Follow",
+    "type": "text",
+    "placeholders": {}
+  },
+  "findTab": "发现",
+  "@findTab": {
+    "description": "Index page buttom tab of Find",
+    "type": "text",
+    "placeholders": {}
+  },
+  "nearbyTab": "附近",
+  "@nearbyTab": {
+    "description": "Index page buttom tab of Nearby",
+    "type": "text",
+    "placeholders": {}
+  },
+  "indexTab": "首页",
+  "@indexTab": {
+    "description": "Index page buttom tab of Index",
+    "type": "text",
+    "placeholders": {}
+  },
+  "shopTab": "商城",
+  "@shopTab": {
+    "description": "Index page buttom tab of Shop",
+    "type": "text",
+    "placeholders": {}
+  },
+  "messageTab": "消息",
+  "@messageTab": {
+    "description": "Index page buttom tab of Message",
+    "type": "text",
+    "placeholders": {}
+  },
+  "userTab": "我",
+  "@userTab": {
+    "description": "Index page buttom tab of User",
+    "type": "text",
+    "placeholders": {}
+  }
+}

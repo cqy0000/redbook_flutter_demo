@@ -1,0 +1,46 @@
+{
+  "@@last_modified": "2020-03-04T12:53:16.939327",
+  "@@locale":"en_US",
+  "followTab": "Follow",
+  "@followTab": {
+    "description": "Index page buttom tab of Follow",
+    "type": "text",
+    "placeholders": {}
+  },
+  "findTab": "Find",
+  "@findTab": {
+    "description": "Index page buttom tab of Find",
+    "type": "text",
+    "placeholders": {}
+  },
+  "nearbyTab": "Nearby",
+  "@nearbyTab": {
+    "description": "Index page buttom tab of Nearby",
+    "type": "text",
+    "placeholders": {}
+  },
+  "indexTab": "Index",
+  "@indexTab": {
+    "description": "Index page buttom tab of Index",
+    "type": "text",
+    "placeholders": {}
+  },
+  "shopTab": "Shop",
+  "@shopTab": {
+    "description": "Index page buttom tab of Shop",
+    "type": "text",
+    "placeholders": {}
+  },
+  "messageTab": "Message",
+  "@messageTab": {
+    "description": "Index page buttom tab of Message",
+    "type": "text",
+    "placeholders": {}
+  },
+  "userTab": "User",
+  "@userTab": {
+    "description": "Index page buttom tab of User",
+    "type": "text",
+    "placeholders": {}
+  }
+}

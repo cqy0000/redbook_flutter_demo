@@ -1,0 +1,16 @@
+export 'article/article_page.dart';
+export 'index/find_page.dart';
+export 'index/follow_page.dart';
+export 'index/nearby_page.dart';
+export 'index/index_main_page.dart';
+export 'index/notesDetails.dart';
+export 'message/message_main_page.dart';
+export 'message/liked_page.dart';
+export 'message/message_detail_page.dart';
+export 'message/message_list_page.dart';
+export 'message/new_followed_page.dart';
+export 'message/received_comments_page.dart';
+export 'shop/shop_main_page.dart';
+export 'user/user_main_page.dart';
+export 'create/create_main_page.dart';
+export 'main_page.dart';
