@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:redbook/constant/icons.dart';
 
 class Iconset{
   String nameStr;
@@ -18,8 +19,8 @@ class ShareNotesBottomSheet extends StatelessWidget {
 
 
   final List<Iconset> line1 = [
-    Iconset('站内好友', '0xe83e', bgColor:Color.fromRGBO(107, 143, 224, 1)),
-    Iconset('微信好友', '0xe603', bgColor:Color.fromRGBO(115, 185, 45, 1)),
+    Iconset('站内好友', CustomIcons.innerFriends, bgColor:Color.fromRGBO(107, 143, 224, 1)),
+    Iconset('微信好友', CustomIcons.weixin, bgColor:Color.fromRGBO(115, 185, 45, 1)),
     Iconset('朋友圈', '0xe83f', bgColor: Color.fromRGBO(172, 204, 55, 1)),
     Iconset('QQ好友', '0xe60b', bgColor: Color.fromRGBO(109, 173, 249, 1)),
     Iconset('QQ空间', '0xe83f', bgColor: Color.fromRGBO(238, 202, 93, 1)),
@@ -27,14 +28,15 @@ class ShareNotesBottomSheet extends StatelessWidget {
   ];
 
   final List<Iconset> line2 = [
-    Iconset('生成分享图', '0xe6be', bdColor: Color.fromRGBO(220, 220, 220, 1), itemColor: Color.fromRGBO(151, 151, 151, 1)),
-    Iconset('复制链接', '0xe648',bdColor: Color.fromRGBO(220, 220, 220, 1),itemColor: Color.fromRGBO(151, 151, 151, 1)),
+    Iconset('生成分享图', '0xe697', bdColor: Color.fromRGBO(220, 220, 220, 1), itemColor: Color.fromRGBO(151, 151, 151, 1)),
+    Iconset('复制链接', '0xe601',bdColor: Color.fromRGBO(220, 220, 220, 1),itemColor: Color.fromRGBO(151, 151, 151, 1)),
     Iconset('不感兴趣', '0xe630',bdColor: Color.fromRGBO(220, 220, 220, 1),itemColor: Color.fromRGBO(151, 151, 151, 1)),
-    Iconset('举报', '0xe600',bdColor: Color.fromRGBO(220, 220, 220, 1),itemColor: Color.fromRGBO(151, 151, 151, 1))
+    Iconset('举报', '0xe689',bdColor: Color.fromRGBO(220, 220, 220, 1),itemColor: Color.fromRGBO(151, 151, 151, 1))
   ];
 
-  return new Container(
-      height: 360.0,
+  return new SafeArea(
+    child: Container(
+      height: 338.0,
       child: Column(
         children: <Widget>[
           Container(
@@ -52,13 +54,14 @@ class ShareNotesBottomSheet extends StatelessWidget {
               Navigator.pop(context);
             },
             child: Container(
-              height: 40,
+              // height: 0,
               alignment: Alignment.center,
               child: Text('取消', style: TextStyle(fontSize: 16, color: Color.fromRGBO(107, 107, 107, 1), fontWeight: FontWeight.w300)),
             )
           )
         ],
       ),
+    )
   );
 }
 
@@ -89,7 +92,8 @@ class ShareNotesBottomSheet extends StatelessWidget {
                               Container(
                                 width: 50.0,
                                 height: 50.0,
-                                margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 10),
+                                alignment: Alignment.center,
+                                margin: EdgeInsets.only(left: 10.0, right: 10.0, bottom: 8),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.all(Radius.circular(25.0)),
                                   color: item.bgColor,

@@ -48,12 +48,12 @@ class CommentItem extends StatelessWidget{
                         ),
                         Container(
                           padding: EdgeInsets.fromLTRB(8, 2, 8, 2),
-                          decoration: comments['isNoteOwner'] != 'false' ? new BoxDecoration(
+                          decoration: comments['isNoteOwner'] != false ? new BoxDecoration(
                             color: Color.fromRGBO(244, 244, 244, 1),
                             borderRadius: BorderRadius.all(Radius.circular(15.0)),
                           ) : new BoxDecoration(),
                           child: Text(
-                            comments['isNoteOwner'] != 'false' ? '作者' : '',
+                            comments['isNoteOwner'] != false ? '作者' : '',
                             style: TextStyle(
                               color: Color.fromRGBO(102, 102, 102, 1),
                               fontSize: ScreenUtil().setSp(20),
@@ -98,30 +98,13 @@ class CommentItem extends StatelessWidget{
           ),
           Column(
             children: <Widget>[
-              AnimatedSwitcher(
-                duration: const Duration(milliseconds: 500),
-                transitionBuilder: (Widget child, Animation<double> animation) {
-                  //执行缩放动画
-                  return ScaleTransition(child: child, scale: animation);
+              IconButton(
+                iconSize: ScreenUtil().setSp(32),
+                icon: Icon(IconData(0xe613, fontFamily: 'IconFont')),
+                onPressed: (){
+                  print('Clicked');
                 },
-                child: IconButton(
-                  iconSize: ScreenUtil().setSp(32),
-                  icon: Icon(IconData(0xe613, fontFamily: 'IconFont'), key: ValueKey(0xe613),),
-                  onPressed: (){
-                    print('Clicked');
-                    setState((){
-                      
-                    })
-                  },
-                ),
-              )
-              // IconButton(
-              //   iconSize: ScreenUtil().setSp(32),
-              //   icon: Icon(IconData(0xe613, fontFamily: 'IconFont')),
-              //   onPressed: (){
-              //     print('Clicked');
-              //   },
-              // ),
+              ),
               Transform.translate(
                   offset: Offset(0, -15.0),
                   child: Text(
