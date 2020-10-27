@@ -201,7 +201,7 @@ class _LoginPhonePage extends State<LoginPhonePage>{
   }
 
   _loginButtonClicked() {
-    Future.delayed(Duration(seconds: 2), (){
+    Future.delayed(Duration(seconds: 1), (){
       _loginBloc.add(
         LoginFormSubmited(
           phoneNum: _phoneNum.text,

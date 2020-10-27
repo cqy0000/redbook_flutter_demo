@@ -14,6 +14,8 @@ Notes _$NotesFromJson(Map<String, dynamic> json) {
     ownerName: json['ownerName'] as String,
     ownerIcon: json['ownerIcon'] as String,
     notesLikedNum: json['notesLikedNum'] as String,
+    isMP4: json['isMP4'] as bool,
+    mp4Url: json['mp4Url'] as String,
     noteFirstImageUrl: json['noteFirstImageUrl'] as String,
     isLiked: json['isLiked'] as bool,
   );
@@ -26,6 +28,8 @@ Map<String, dynamic> _$NotesToJson(Notes instance) => <String, dynamic>{
       'ownerName': instance.ownerName,
       'ownerIcon': instance.ownerIcon,
       'notesLikedNum': instance.notesLikedNum,
+      'isMP4': instance.isMP4,
+      'mp4Url': instance.mp4Url,
       'noteFirstImageUrl': instance.noteFirstImageUrl,
       'isLiked': instance.isLiked,
     };

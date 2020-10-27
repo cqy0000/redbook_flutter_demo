@@ -3,11 +3,11 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:redbook/Settings/rootPage.dart';
+// import 'package:redbook/Settings/rootPage.dart';
 import 'package:redbook/blocs/authentication/token_authentication_bloc/bloc.dart';
 import 'package:redbook/localizarions/localization.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:flutter_easyrefresh/easy_refresh.dart';
+// import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:redbook/routers/routes.dart';
 import 'package:redbook/Settings/init.dart';
 
@@ -61,12 +61,12 @@ class MyAppState extends State<MyApp>{
                 theme: ThemeData(
                   primaryColor: Colors.white,
                 ),
-                home: RootPage(),
+                home: MainPage(),
                 localizationsDelegates: [
                   GlobalMaterialLocalizations.delegate,
                   GlobalWidgetsLocalizations.delegate,
                   RefreshLocalizations.delegate,
-                  GlobalEasyRefreshLocalizations.delegate,
+                  // GlobalEasyRefreshLocalizations.delegate,
                   CustomLocalizationsDelegate()
                 ],
                 supportedLocales: [

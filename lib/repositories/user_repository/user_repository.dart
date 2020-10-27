@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:redbook/data/storage/storage.dart';
 import 'package:redbook/constant/storage_constant.dart';
+import 'package:redbook/repositories/user_repository/models/userprofile_model.dart';
 
 class UserRepostory {
   final Storage _storage;
@@ -59,5 +60,17 @@ class UserRepostory {
       _storage.delete(key:tokenTypeStorageKey),
       _storage.delete(key:usidStorageKey),
     ]);
+  }
+
+  Future<UserProfile> getUserInfo() async{
+    var url = 'http://localhost:3000//userProfile/1';
+    try{
+      Response res = await Dio().get(url);
+
+      return UserProfile.fromJson(res.data);
+    }catch (error) {
+      print(error);
+      throw error;
+    }
   }
 }

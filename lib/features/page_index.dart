@@ -3,6 +3,7 @@ export 'index/follow_page.dart';
 export 'index/nearby_page.dart';
 export 'index/index_main_page.dart';
 export 'index/notes_details_page.dart';
+export 'index/notes_video_page.dart';
 export 'message/message_main_page.dart';
 export 'message/liked_page.dart';
 export 'message/message_detail_page.dart';

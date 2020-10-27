@@ -10,6 +10,8 @@ class Notes {
   String ownerName;
   String ownerIcon;
   String notesLikedNum;
+  bool isMP4;
+  String mp4Url;
   String noteFirstImageUrl;
   bool isLiked;
 
@@ -20,6 +22,8 @@ class Notes {
       this.ownerName,
       this.ownerIcon,
       this.notesLikedNum,
+      this.isMP4,
+      this.mp4Url,
       this.noteFirstImageUrl,
       this.isLiked});
 
@@ -30,6 +34,8 @@ class Notes {
     ownerName = json['ownerName'];
     ownerIcon = json['ownerIcon'];
     notesLikedNum = json['notesLikedNum'];
+    isMP4 = json['isMP4'];
+    mp4Url = json['mp4Url'];
     noteFirstImageUrl = json['noteFirstImageUrl'];
     isLiked = json['isLiked'];
   }
@@ -42,6 +48,8 @@ class Notes {
     data['ownerName'] = this.ownerName;
     data['ownerIcon'] = this.ownerIcon;
     data['notesLikedNum'] = this.notesLikedNum;
+    data['isMP4'] = this.isMP4;
+    data['mp4Url'] = this.mp4Url;
     data['noteFirstImageUrl'] = this.noteFirstImageUrl;
     data['isLiked'] = this.isLiked;
     return data;

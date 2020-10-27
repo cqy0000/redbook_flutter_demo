@@ -7,6 +7,7 @@ final routes = {
   '/find': (context) => FindPage(),
   '/follow': (context) => FollowPage(),
   '/notesDetails': (context, {noteId}) => NotesDetailsPage(noteId: noteId),
+  '/notesVideos': (context, {note}) => NotesVideoPage(note: note),
   '/login': (context) => LoginMainPage(),
   '/login/phone': (context) => LoginPhonePage(),
   '/index': (context) => MainPage(),

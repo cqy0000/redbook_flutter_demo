@@ -2,10 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:redbook/repositories/notes_repository/models/notes_model.dart';
+import 'package:video_player/video_player.dart';
 
-class NotesCard extends StatelessWidget {
+class NotesCard extends StatefulWidget {
   final Notes note;
   const NotesCard({Key key, @required this.note}) : super(key: key);
+
+  @override
+  _NotesCard createState() => _NotesCard();
+}
+
+class _NotesCard extends State<NotesCard> {
+  VideoPlayerController _controller;
+  Notes note;
+  Future _initializeVideoPlayerFuture;
+
+  @override
+  @override
+  void initState() {
+    super.initState();
+    note = widget.note;
+    if(note.isMP4) {
+      _controller = VideoPlayerController.asset('assets/videos/bee.mp4');
+      _controller.addListener(() {
+        setState(() {});
+      });
+      _controller.setLooping(true);
+      _initializeVideoPlayerFuture = _controller.initialize();
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +41,36 @@ class NotesCard extends StatelessWidget {
       margin: EdgeInsets.all(2),
       child: new Column(
         children: [
-          CachedNetworkImage(
+          widget.note.isMP4 == false
+          ? CachedNetworkImage(
             imageUrl: note.noteFirstImageUrl,
             placeholder:  (context, url)  => Container(
               color: Colors.white,
             ),
             errorWidget: (context, url, error) => Icon(Icons.error),
+          )
+          : FutureBuilder(
+            future: _initializeVideoPlayerFuture,
+            builder: (context, snapshot) {
+              if (snapshot.hasError) print(snapshot.error);
+              if (snapshot.connectionState == ConnectionState.done) {
+                return AspectRatio(
+                  aspectRatio: _controller.value.aspectRatio,
+                  child: Stack(
+                    alignment: Alignment.bottomCenter,
+                    children: <Widget>[
+                      VideoPlayer(_controller),
+                      _PlayPauseOverlay(controller: _controller),
+                      VideoProgressIndicator(_controller, allowScrubbing: true),
+                    ],
+                  ),
+                );
+              } else {
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+            },
           ),
           Container(
             margin: EdgeInsetsDirectional.fromSTEB(8,8,8,8),
@@ -87,5 +137,50 @@ class NotesCard extends StatelessWidget {
   _likedBtnClicked(int index) {
     print('liked clicked');
     note.isLiked = !note.isLiked;
+  }
+
+  @override
+  void dispose() {
+    if(note.isMP4){
+      _controller.dispose();
+      print('note cards isMP4 dispose');
+    }
+    super.dispose();
+  }
+
+}
+
+class _PlayPauseOverlay extends StatelessWidget {
+  const _PlayPauseOverlay({Key key, this.controller}) : super(key: key);
+
+  final VideoPlayerController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        AnimatedSwitcher(
+          duration: Duration(milliseconds: 50),
+          reverseDuration: Duration(milliseconds: 200),
+          child: controller.value.isPlaying
+              ? SizedBox.shrink()
+              : Container(
+                  color: Colors.black26,
+                  child: Center(
+                    child: Icon(
+                      Icons.play_arrow,
+                      color: Colors.white,
+                      size: 100.0,
+                    ),
+                  ),
+                ),
+        ),
+        GestureDetector(
+          onTap: () {
+            controller.value.isPlaying ? controller.pause() : controller.play();
+          },
+        ),
+      ],
+    );
   }
 }

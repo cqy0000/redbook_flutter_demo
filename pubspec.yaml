@@ -37,6 +37,10 @@ dependencies:
   dio: ^3.0.9
   path_provider: ^1.6.5
   hydrated_bloc: ^3.0.0
+  video_player: ^0.10.8+1
+  video_thumbnail: ^0.2.0
+  camera: ^0.5.7+4
+  image_picker: ^0.6.3+4
 
 dev_dependencies:
   flutter_test:
@@ -59,6 +63,9 @@ flutter:
   uses-material-design: true
   assets:
     - intro.flr
+    - assets/images/loginBG.jpeg
+    - assets/videos/test.mp4
+    - assets/videos/bee.mp4
   fonts:
     - family: IconFont
       fonts:

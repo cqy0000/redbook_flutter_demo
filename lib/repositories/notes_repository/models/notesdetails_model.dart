@@ -8,6 +8,8 @@ class NotesDetails {
   String userName;
   String userIcon;
   bool isFollowed;
+  bool isMP4;
+  String mp4Url;
   List<String> imagesUrl;
   String noteTitle;
   String noteContent;
@@ -26,6 +28,8 @@ class NotesDetails {
       this.userName,
       this.userIcon,
       this.isFollowed,
+      this.isMP4,
+      this.mp4Url,
       this.imagesUrl,
       this.noteTitle,
       this.noteContent,
@@ -44,6 +48,8 @@ class NotesDetails {
     userName = json['userName'];
     userIcon = json['userIcon'];
     isFollowed = json['isFollowed'];
+    isMP4 = json['isMP4'];
+    mp4Url = json['mp4Url'];
     imagesUrl = json['imagesUrl'].cast<String>();
     noteTitle = json['noteTitle'];
     noteContent = json['noteContent'];
@@ -66,6 +72,8 @@ class NotesDetails {
     data['userName'] = this.userName;
     data['userIcon'] = this.userIcon;
     data['isFollowed'] = this.isFollowed;
+    data['isMP4'] = this.isMP4;
+    data['mp4Url'] = this.mp4Url;
     data['imagesUrl'] = this.imagesUrl;
     data['noteTitle'] = this.noteTitle;
     data['noteContent'] = this.noteContent;

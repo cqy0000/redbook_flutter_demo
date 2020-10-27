@@ -4,6 +4,8 @@ import 'package:redbook/constant/icons.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:redbook/features/login/bloc/login_bloc.dart';
 import 'package:redbook/features/login/login_phone_page.dart';
+import 'dart:async';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class LoginMainPage extends StatefulWidget {
   const LoginMainPage({Key key}) : super(key: key);
@@ -14,6 +16,7 @@ class LoginMainPage extends StatefulWidget {
 
 class _LoginMainPage extends State<LoginMainPage>{
   LoginBloc _bloc;
+  Timer _timer;
 
   @override
   void initState(){
@@ -32,11 +35,31 @@ class _LoginMainPage extends State<LoginMainPage>{
               top: 0,
               bottom: 0,
               right: 0,
-              child: Container(
-                width: double.infinity,
+              child: CarouselSlider(
                 height: double.infinity,
-                color: Colors.white,
+                scrollDirection: Axis.vertical,
+                viewportFraction: 1.0,
+                aspectRatio: 1/1,
+                autoPlay: true,
+                enlargeCenterPage: false,
+                enableInfiniteScroll: true,
+                autoPlayInterval: Duration(seconds: 3),
+                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                autoPlayCurve: Curves.fastOutSlowIn,
+                items: <Widget>[
+                  Image.asset('assets/images/loginBG.jpeg', fit: BoxFit.cover,),
+                  Image.asset('assets/images/loginBG.jpeg', fit: BoxFit.cover,),
+                ],
               ),
+              // child: AnimatedContainer(
+              //   width: double.infinity,
+              //   height: double.infinity,
+              //   color: Colors.white,
+              //   curve: Curves.easeInToLinear,
+              //   duration: Duration(milliseconds: 50000),
+              //   transform: _transform,
+              //   child: Image.asset('assets/images/loginBG.jpeg', fit: BoxFit.cover,),
+              // ),
             ),
             Container(
               color: Color.fromRGBO(0, 0, 0, 0.2),
