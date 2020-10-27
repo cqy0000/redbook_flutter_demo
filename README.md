@@ -16,6 +16,6 @@ flutter packages pub run build_runner build --delete-conflicting-outputs
 
 <video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
       <source id="mp4" src="https://github.com/cqy0000/redbook_flutter_demo/tree/main/assets/videos/demo.mp4" type="video/mp4">
-      <p>redbook flutter demo video.</p>
+      <p>redbook flutter demo video. 地址：../assets/videos/demo.mp4</p>
 </video>
 
