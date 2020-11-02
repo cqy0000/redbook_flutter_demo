@@ -1,5 +1,6 @@
 # redbook
 
+flutter 仿小红书demo
 A new Flutter project for mocking redbook app.
 
 ## translate
