@@ -1,22 +1,39 @@
-# redbook
+# 仿小红书App
 
-flutter 仿小红书demo
-A new Flutter project for mocking redbook app.
+## json-server 数据
 
-## translate
+没有后台，数据直接用json-server跑在本地localhost
+
+```
+npm i -g json-server
+json-serer db.json --watch
+```
+
+## 配置国际化
+
+```
 flutter pub run intl_translation:extract_to_arb --output-dir=lib/i18n/l10n lib/i18n/features/navi_tab_strings.dart
 
 flutter pub pub run intl_translation:generate_from_arb --output-dir=lib/i18n/l10n --no-use-deferred-loading lib/i18n/features/*dart lib/i18n/l10n/*.arb
+```
 
 ## model
+主要使用json_annotation 和 json_serializable
+### 用json2dart将json格式的数据
+### 执行脚本
+
+```
 flutter packages pub run build_runner build --delete-conflicting-outputs
+```
+
+## 效果
+项目还有很多待完善的地方，如有问题，欢迎指出
 
 
-## demo video
-这项目当时花了半个月学了flutter做的比较粗糙，练练手，日后再优化，真机演示效果如下：
 
-<video id="video" controls="" preload="none" poster="http://media.w3.org/2010/05/sintel/poster.png">
-      <source id="mp4" src="https://github.com/cqy0000/redbook_flutter_demo/tree/main/assets/videos/demo.mp4" type="video/mp4">
-      <p>redbook flutter demo video. 地址：../assets/videos/demo.mp4</p>
-</video>
 
+## 待完善点
+* 用firebase验证授权。目前登录页手机登录没有进行数据验证o(╯□╰)o~~~
+* 登入页面背景循环滚动
+* 商城待完善
+* 列表视频的自动播放

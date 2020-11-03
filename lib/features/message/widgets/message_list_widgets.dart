@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
+import 'package:redbook/utils/time.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:redbook/constant/icons.dart';
 import 'package:redbook/constant/style.dart';
@@ -70,7 +71,7 @@ class _MessageList extends State<MessageListWidget> {
 
   Widget _msgList() {
     return ListView.builder(
-      itemCount: 8,
+      itemCount: msglist.length > 0 ? msglist.length: 0,
       shrinkWrap: false,
       itemBuilder: (BuildContext context, int index) {
         return Container(
@@ -110,7 +111,7 @@ class _MessageList extends State<MessageListWidget> {
                       ),
                       Container(
                         alignment: Alignment.topRight,
-                        child: Text(msglist[index].msgTime, style: TextStyle(fontSize: 10, color: Styles.grey, fontWeight: FontWeight.w300), textAlign: TextAlign.right,)
+                        child: Text(TimeFormatUtil.format(msglist[index].msgTime), style: TextStyle(fontSize: 10, color: Styles.grey, fontWeight: FontWeight.w300), textAlign: TextAlign.right,)
                       ),
                     ],
                   )

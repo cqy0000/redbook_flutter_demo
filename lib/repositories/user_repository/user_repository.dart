@@ -63,13 +63,12 @@ class UserRepostory {
   }
 
   Future<UserProfile> getUserInfo() async{
-    var url = 'http://localhost:3000//userProfile/1';
+    var url = 'http://localhost:3000/userProfile/1';
     try{
       Response res = await Dio().get(url);
 
       return UserProfile.fromJson(res.data);
     }catch (error) {
-      print(error);
       throw error;
     }
   }
