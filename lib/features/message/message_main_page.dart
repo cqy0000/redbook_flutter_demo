@@ -1,31 +1,46 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:redbook/constant/icons.dart';
 import 'package:redbook/constant/style.dart';
+import 'package:redbook/features/message/widgets/message_list_widgets.dart';
+import 'package:redbook/features/message/blocs/bloc.dart';
+import 'package:redbook/repositories/message_repository/message_repository.dart';
 
-class MessageMainPage extends StatelessWidget {
+class MessageMainPage extends StatefulWidget {
   const MessageMainPage({Key key, this.labelId}): super(key: key);
 
   final String labelId;
 
+  @override
+  _MessageMainPageState createState() => _MessageMainPageState();
+
+}
+
+class _MessageMainPageState extends State<MessageMainPage> {
+  MessageRepository msglist = new MessageRepository();
+
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('消息', style: TextStyle(fontSize: 18),),
-        actions: <Widget>[
-          GestureDetector(
-            onTap: _toChat,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Icon(IconData(int.parse(CustomIcons.chatIcon), fontFamily: 'IconFont'), size: 20),
-                SizedBox(width: 15,)
-              ]
-            ),
-          )
-        ],
-        elevation: 0,
-      ),
-      body: _buildBody(),
+    return BlocProvider<MessageListLoadBloc>(
+      create: (context) => MessageListLoadBloc(msgListRepos: msglist)..add(Fetch()),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('消息', style: TextStyle(fontSize: 18),),
+          actions: <Widget>[
+            GestureDetector(
+              onTap: _toChat,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Icon(IconData(int.parse(CustomIcons.chatIcon), fontFamily: 'IconFont'), size: 20),
+                  SizedBox(width: 15,)
+                ]
+              ),
+            )
+          ],
+          elevation: 0,
+        ),
+        body: _buildBody(),
+      )
     );
   }
 
@@ -39,7 +54,7 @@ class MessageMainPage extends StatelessWidget {
         _category(),
         SizedBox(height: 10,),
         Expanded(
-          child: _msgList(),
+          child: MessageListWidget(),
         )
       ],
     )
@@ -129,61 +144,6 @@ class MessageMainPage extends StatelessWidget {
           ),
         ],
       )
-    );
-  }
-
-  Widget _msgList() {
-    return ListView.builder(
-      itemCount: 8,
-      shrinkWrap: false,
-      itemBuilder: (BuildContext context, int index) {
-        return Container(
-          padding: EdgeInsets.fromLTRB(15, 15, 0, 0),
-          color: Colors.white,
-          child: Row(
-            children: <Widget>[
-              Container(
-                child: CircleAvatar(
-                  child: Icon(IconData(int.parse(CustomIcons.chatIcon), fontFamily: 'IconFont'),color: Colors.white)
-                ),
-              ),
-              SizedBox(width: 12),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Styles.grey,
-                        width: 0.2,
-                        style: BorderStyle.solid
-                      )
-                    )
-                  ),
-                  padding: EdgeInsets.only(bottom: 15, right: 15),
-                  child: Row(
-                    children: <Widget>[
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text('推送消息', textAlign: TextAlign.left, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
-                            SizedBox(height: 3.0,),
-                            Text('挑了100家店后❤️我终于找到这家宝藏', style: TextStyle(fontSize: 13, color: Styles.grey, fontWeight: FontWeight.w300),)
-                          ],
-                        ),
-                      ),
-                      Container(
-                        alignment: Alignment.topRight,
-                        child: Text('13:02', style: TextStyle(fontSize: 10, color: Styles.grey, fontWeight: FontWeight.w300), textAlign: TextAlign.right,)
-                      ),
-                    ],
-                  )
-                ),
-              )
-            ],
-          ),
-        );
-      }
     );
   }
 
